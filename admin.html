@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>CreatorFlow Admin</title>
+  <style>
+    :root{--ink:#101827;--muted:#697489;--purple:#7153f4;--purple2:#8f78ff;--paper:#f4f6fb;--white:#fff;--line:#e1e5ee;--green:#18a77b;--orange:#f0a229;--red:#e24f62;--blue:#3977e8}*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink)}button,input,textarea,select{font:inherit}button{cursor:pointer}[hidden]{display:none!important}.login-page{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}.login-art{background:var(--ink);color:white;padding:70px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.login-art:after{content:"";position:absolute;width:500px;height:500px;border-radius:50%;background:#7153f45c;filter:blur(70px);right:-180px;bottom:-180px}.brand{font-weight:900;letter-spacing:-.5px}.brand span{color:var(--purple2)}.login-art h1{font-size:60px;letter-spacing:-3px;line-height:1;margin:0;max-width:530px;position:relative;z-index:1}.login-art h1 em{font-style:normal;color:#a894ff}.login-art p{color:#aeb8c9;line-height:1.7;max-width:470px;position:relative;z-index:1}.login-box{display:grid;place-items:center;padding:30px}.login-card{width:min(420px,100%);background:white;border:1px solid var(--line);border-radius:22px;padding:38px;box-shadow:0 30px 70px #1b244012}.kicker{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple);font-weight:900}.login-card h2{font-size:34px;letter-spacing:-1.5px;margin:10px 0}.login-card>p{color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:28px}label{font-size:12px;font-weight:800;display:flex;flex-direction:column;gap:7px;margin-bottom:15px}input,textarea,select{border:1px solid var(--line);background:white;border-radius:10px;padding:12px 13px;color:var(--ink);outline:none;width:100%}input:focus,textarea:focus,select:focus{border-color:var(--purple);box-shadow:0 0 0 3px #7153f415}.primary{width:100%;border:0;border-radius:11px;padding:14px;background:var(--purple);color:white;font-weight:900}.primary:hover{background:#5f41e5}.login-error,.alert-error{background:#ffebee;color:#b72d3f;padding:11px;border-radius:9px;font-size:12px;line-height:1.5;margin-bottom:14px}.app{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:245px;background:var(--ink);color:white;padding:28px 18px;display:flex;flex-direction:column;z-index:20}.sidebar .brand{font-size:18px;padding:0 12px 30px}.nav-button{border:0;background:transparent;color:#aeb7c8;border-radius:10px;padding:13px 14px;text-align:left;font-weight:800;margin:3px 0}.nav-button.active,.nav-button:hover{background:#202b40;color:white}.nav-button span{display:inline-grid;place-items:center;width:23px;margin-right:8px;color:#a794ff}.admin-mini{margin-top:auto;border-top:1px solid #2a3549;padding:20px 10px 0}.admin-mini small{display:block;color:#7f8ba0;margin-bottom:4px}.admin-mini b{font-size:12px;word-break:break-all}.logout{margin-top:14px;border:1px solid #38445a;background:transparent;color:white;border-radius:9px;padding:9px 12px;width:100%}.main{margin-left:245px;padding:34px;min-height:100vh}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.topbar h1{font-size:30px;letter-spacing:-1.3px;margin:0}.topbar p{color:var(--muted);font-size:13px;margin:6px 0 0}.top-actions{display:flex;gap:10px}.ghost,.add-button{border:1px solid var(--line);background:white;border-radius:10px;padding:10px 14px;font-weight:800;color:var(--ink)}.add-button{border-color:var(--purple);background:var(--purple);color:white}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}.stat{background:white;border:1px solid var(--line);border-radius:17px;padding:20px;position:relative;overflow:hidden}.stat:after{content:"";position:absolute;right:-15px;top:-15px;width:60px;height:60px;border-radius:50%;background:var(--tint,#eeeafe)}.stat small{color:var(--muted);font-weight:800}.stat strong{display:block;font-size:32px;margin-top:15px}.stat.new{--tint:#e9edff}.stat.pending{--tint:#fff0d3}.stat.complete{--tint:#dff7ee}.stat.total{--tint:#eeeafe}.panel{background:white;border:1px solid var(--line);border-radius:18px;overflow:hidden}.panel-head{display:flex;align-items:center;justify-content:space-between;padding:20px;border-bottom:1px solid var(--line);gap:15px}.panel-head h2{font-size:17px;margin:0}.filters{display:flex;gap:7px}.filter{border:1px solid var(--line);background:white;color:var(--muted);border-radius:25px;padding:7px 11px;font-size:11px;font-weight:900}.filter.active{background:var(--ink);color:white;border-color:var(--ink)}.search{max-width:250px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:930px}th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8993a5;padding:13px 17px;background:#fafbfe}td{padding:15px 17px;border-top:1px solid #edf0f5;font-size:12px;vertical-align:middle}.customer b,.service-name b{display:block;font-size:13px}.customer small,.service-name small{display:block;color:var(--muted);margin-top:4px}.badge{display:inline-block;border-radius:20px;padding:6px 9px;font-size:10px;font-weight:900;text-transform:uppercase}.badge.new{background:#e9edff;color:#365cd6}.badge.pending{background:#fff0d3;color:#a76b07}.badge.completed{background:#def7ec;color:#137b5b}.badge.cancelled{background:#ffe3e7;color:#b72d3f}.row-actions{display:flex;gap:6px}.icon-btn{border:1px solid var(--line);background:white;border-radius:8px;padding:7px 9px;font-weight:800}.empty{text-align:center;padding:60px 20px;color:var(--muted)}.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.service-card{background:white;border:1px solid var(--line);border-radius:17px;padding:18px;display:flex;flex-direction:column;min-height:190px}.service-card.inactive{opacity:.55}.service-card .line1{display:flex;justify-content:space-between;gap:12px}.service-card .type{color:var(--purple);font-size:10px;text-transform:uppercase;font-weight:900;letter-spacing:1px}.service-card h3{margin:20px 0 8px;font-size:18px}.service-card p{color:var(--muted);font-size:12px;line-height:1.55;margin:0}.service-foot{display:flex;justify-content:space-between;align-items:end;margin-top:auto;padding-top:20px}.service-foot strong{font-size:20px;color:var(--purple)}.service-foot div{display:flex;gap:6px}.modal-bg{position:fixed;inset:0;background:#0b1121b7;backdrop-filter:blur(5px);z-index:60;display:grid;place-items:center;padding:20px}.modal{background:var(--paper);border-radius:20px;width:min(630px,100%);max-height:92vh;overflow:auto;padding:30px;position:relative}.modal h2{font-size:27px;margin:8px 0 25px}.close-modal{position:absolute;right:20px;top:18px;border:1px solid var(--line);background:white;border-radius:50%;width:36px;height:36px;font-size:22px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.checkbox{flex-direction:row;align-items:center;gap:9px}.checkbox input{width:auto}.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}.modal-actions button{width:auto;padding-inline:20px}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.detail-item{background:white;border:1px solid var(--line);border-radius:10px;padding:13px}.detail-item small{display:block;color:var(--muted);margin-bottom:6px}.detail-item b{font-size:13px}.detail-item.full{grid-column:1/-1}.status-select{padding:8px;min-width:125px}.toast{position:fixed;right:22px;bottom:22px;background:var(--ink);color:white;border-radius:11px;padding:13px 17px;font-size:12px;font-weight:800;z-index:90;box-shadow:0 15px 35px #11182d38}.setup{border:1px dashed #bdb2f7;background:#f4f1ff;border-radius:15px;padding:22px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:20px}.setup h3{margin:0 0 6px}.setup p{color:var(--muted);font-size:12px;margin:0}.spinner{width:24px;height:24px;border:3px solid #ded9ff;border-top-color:var(--purple);border-radius:50%;animation:spin .7s linear infinite;margin:60px auto}@keyframes spin{to{transform:rotate(360deg)}}
+    .stats{grid-template-columns:repeat(5,1fr)}.stat.cancelled{--tint:#ffe3e7}.filter{display:flex;align-items:center;gap:7px;padding:9px 13px}.filter-count{display:grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:12px;background:#edf0f6;color:var(--ink);font-size:10px}.filter.active .filter-count{background:#ffffff24;color:white}.order-view-title{text-transform:capitalize}.dashboard-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}.dash-list{background:white;border:1px solid var(--line);border-radius:18px;overflow:hidden}.dash-list h2{font-size:16px;margin:0;padding:18px;border-bottom:1px solid var(--line)}.dash-row{display:flex;justify-content:space-between;gap:15px;padding:13px 18px;border-top:1px solid #edf0f5;font-size:12px}.dash-row:first-of-type{border-top:0}.dash-row small{display:block;color:var(--muted);margin-top:4px}.dash-row strong{white-space:nowrap}.section-card{background:white;border:1px solid var(--line);border-radius:17px;padding:18px}.section-card.inactive{opacity:.55}.section-card h3{margin:12px 0 7px}.section-card p{color:var(--muted);font-size:12px;line-height:1.5}.section-actions{display:flex;gap:7px;margin-top:17px}
+    @media(max-width:1000px){.stats{grid-template-columns:repeat(2,1fr)}.services-grid{grid-template-columns:1fr 1fr}.login-art{padding:45px}.login-art h1{font-size:48px}}
+    @media(max-width:720px){.login-page{grid-template-columns:1fr}.login-art{display:none}.sidebar{position:fixed;inset:auto 0 0;width:auto;height:72px;flex-direction:row;padding:8px;align-items:center;overflow-x:auto}.sidebar .brand,.admin-mini{display:none}.nav-button{flex:0 0 76px;text-align:center;font-size:9px;padding:8px 4px}.nav-button span{display:block;margin:auto}.main{margin:0;padding:20px 14px 95px}.topbar{align-items:flex-start}.topbar h1{font-size:24px}.stats{grid-template-columns:1fr 1fr;gap:9px}.stat{padding:15px}.stat strong{font-size:25px}.panel-head{align-items:flex-start;flex-direction:column}.filters{overflow:auto;width:100%}.search{max-width:none}.services-grid,.dashboard-grid{grid-template-columns:1fr}.form-row,.detail-grid{grid-template-columns:1fr}.detail-item.full{grid-column:auto}.setup{align-items:flex-start;flex-direction:column}.login-card{padding:28px}}
+  </style>
+</head>
+<body>
+  <section class="login-page" id="login-page">
+    <div class="login-art">
+<div class="brand">CREATOR<span>FLOW</span>
+</div>
+<div>
+<h1>Run your creator business <em>from one place.</em>
+</h1>
+<p>Track every booking, manage your services and keep clients moving from new request to completed work.</p>
+</div>
+<small>SECURE ADMIN CONSOLE</small>
+</div>
+    <div class="login-box">
+<form class="login-card" id="login-form">
+<span class="kicker">Admin access</span>
+<h2>Welcome back.</h2>
+<p>Sign in with your authorized CreatorFlow administrator account.</p>
+<div class="login-error" id="login-error" hidden>
+</div>
+<label>Email<input type="email" name="email" value="labibeddie@gmail.com" required>
+</label>
+<label>Password<input type="password" name="password" required placeholder="Your Firebase password">
+</label>
+<button class="primary" id="login-button">Sign in to dashboard</button>
+</form>
+</div>
+  </section>
+
+  <div class="app" id="admin-app" hidden>
+    <aside class="sidebar">
+<div class="brand">CREATOR<span>FLOW</span>
+</div>
+<button class="nav-button active" data-view="dashboard">
+<span>⌂</span> Dashboard</button>
+<button class="nav-button" data-view="orders">
+<span>▦</span> Orders</button>
+<button class="nav-button" data-view="services">
+<span>◇</span> Services</button>
+<button class="nav-button" data-view="showcase">
+<span>▶</span> Our Edits</button>
+<button class="nav-button" data-view="partners">
+<span>◎</span> Partners</button>
+<button class="nav-button" data-view="worktypes">
+<span>⚒</span> Partner Work Types</button>
+<button class="nav-button" data-view="members">
+<span>✦</span> Member Strip</button>
+<button class="nav-button" data-view="sections">
+<span>▤</span> Sections</button>
+<button class="nav-button" data-view="users">
+<span>♟</span> Users</button>
+<button class="nav-button" data-view="about">
+<span>♙</span> About Page</button>
+<div class="admin-mini">
+<small>Signed in as</small>
+<b id="admin-email">
+</b>
+<button class="logout" id="logout">Sign out</button>
+</div>
+</aside>
+    <main class="main">
+      <section id="dashboard-view">
+        <header class="topbar"><div><h1>Business overview</h1><p>Revenue, running work, rentals and partner activity in one place.</p></div><div class="top-actions"><button class="ghost" id="refresh-dashboard">↻ Refresh</button><button class="ghost" id="open-clear-data" style="color:var(--red)">Clear data</button></div></header>
+        <div class="stats"><article class="stat complete"><small>Completed revenue</small><strong id="dash-revenue">₹0</strong></article><article class="stat pending"><small>Running works</small><strong id="dash-running">0</strong></article><article class="stat new"><small>Items on rent</small><strong id="dash-rentals">0</strong></article><article class="stat total"><small>Approved partners</small><strong id="dash-partners">0</strong></article><article class="stat complete"><small>Live portfolio</small><strong id="dash-live-work">0</strong></article></div>
+        <div class="dashboard-grid"><section class="dash-list"><h2>Running works</h2><div id="dash-work-list"></div></section><section class="dash-list"><h2>Items going on rent</h2><div id="dash-rental-list"></div></section><section class="dash-list"><h2>Approved partners</h2><div id="dash-partner-list"></div></section><section class="dash-list"><h2>Completed orders</h2><div id="dash-complete-list"></div></section></div>
+      </section>
+      <section id="orders-view" hidden>
+        <header class="topbar">
+<div>
+<h1>Orders dashboard</h1>
+<p>Manage bookings and client progress in real time.</p>
+</div>
+<div class="top-actions">
+<button class="ghost" id="refresh-orders">↻ Refresh</button>
+</div>
+</header>
+        <div class="stats">
+<article class="stat total">
+<small>Total orders</small>
+<strong id="count-total">0</strong>
+</article>
+<article class="stat new">
+<small>New</small>
+<strong id="count-new">0</strong>
+</article>
+<article class="stat pending">
+<small>Pending</small>
+<strong id="count-pending">0</strong>
+</article>
+<article class="stat complete">
+<small>Completed</small>
+<strong id="count-completed">0</strong>
+</article>
+<article class="stat cancelled">
+<small>Cancelled</small>
+<strong id="count-cancelled">0</strong>
+</article>
+</div>
+        <section class="panel">
+<div class="panel-head">
+<h2 class="order-view-title" id="order-view-title">New orders</h2>
+<div class="filters" id="order-filters">
+<button class="filter active" data-status="new">New <span class="filter-count" id="tab-count-new">0</span></button>
+<button class="filter" data-status="pending">Pending <span class="filter-count" id="tab-count-pending">0</span></button>
+<button class="filter" data-status="completed">Completed <span class="filter-count" id="tab-count-completed">0</span></button>
+<button class="filter" data-status="cancelled">Cancelled <span class="filter-count" id="tab-count-cancelled">0</span></button>
+</div>
+<input class="search" id="order-search" placeholder="Search name, phone or service">
+</div>
+<div class="table-wrap" id="orders-table">
+<div class="spinner">
+</div>
+</div>
+</section>
+      </section>
+      <section id="services-view" hidden>
+        <header class="topbar">
+<div>
+<h1>Services & pricing</h1>
+<p>Add services, change prices and control what appears on your website.</p>
+</div>
+<button class="add-button" id="add-service">+ Add service</button>
+</header>
+        <section class="setup" style="display:block"><div style="margin-bottom:15px"><h3>Homepage section arrangement</h3><p>Create new service sections and move every complete section—including custom sections—up or down.</p></div><div id="home-layout-list" style="display:grid;gap:8px"></div></section>
+        <div class="setup" id="seed-box" hidden>
+<div>
+<h3>Import your current website services</h3>
+<p>Create editable database copies of all existing packages and services.</p>
+</div>
+<button class="add-button" id="seed-services">Import current services</button>
+</div>
+        <div class="services-grid" id="services-grid">
+<div class="spinner">
+</div>
+</div>
+      </section>
+      <section id="showcase-view" hidden>
+        <header class="topbar">
+<div>
+<h1>Our edits showcase</h1>
+<p>Add Google Drive, Instagram or YouTube videos to the separate Our Work page.</p>
+</div>
+<button class="add-button" id="add-video">+ Add video</button>
+</header>
+        <form class="setup" id="showcase-settings">
+<div style="flex:1">
+<h3>Showcase section</h3>
+<p>Control the portfolio heading and switch the homepage preview on or off.</p>
+<div class="form-row" style="margin-top:15px">
+<input name="title" placeholder="See what we create.">
+<input name="subtitle" placeholder="A selection of our best edits.">
+</div>
+</div>
+<label class="checkbox" style="margin:0">
+<input type="checkbox" name="enabled"> Section enabled</label>
+<button class="add-button" type="submit">Save settings</button>
+</form>
+        <div class="services-grid" id="videos-grid">
+<div class="spinner">
+</div>
+</div>
+      </section>
+      <section id="partners-view" hidden>
+        <header class="topbar"><div><h1>Partner applications</h1><p>Review editors, shooters, gear providers and studio partners.</p></div></header>
+        <div class="filters" id="partner-status-filters" style="margin-bottom:14px"><button class="filter active" data-partner-filter="all">All</button><button class="filter" data-partner-filter="new">New</button><button class="filter" data-partner-filter="contacted">Contacted</button><button class="filter" data-partner-filter="approved">Approved</button><button class="filter" data-partner-filter="rejected">Rejected</button></div>
+        <section class="panel"><div class="panel-head"><h2>CreatorFlow network</h2><input class="search" id="partner-search" placeholder="Search name, city or role"></div><div class="table-wrap" id="partners-table"><div class="spinner"></div></div></section>
+      </section>
+      <section id="worktypes-view" hidden>
+        <header class="topbar"><div><h1>Partner work types</h1><p>Manage the role templates shown on the Become a Partner page.</p></div><button class="add-button" id="add-worktype">+ Add work type</button></header>
+        <section class="setup" style="display:block"><div><h3>Start with a template</h3><p>Choose a ready-made template, customise it and save.</p></div><div class="filters" id="worktype-templates" style="margin-top:15px"><button class="filter" data-work-template="editor">Video Editor</button><button class="filter" data-work-template="camera">Cameraman</button><button class="filter" data-work-template="gear">Gear Provider</button><button class="filter" data-work-template="studio">Studio Partner</button><button class="filter" data-work-template="other">Other Service</button></div></section>
+        <div class="services-grid" id="worktypes-grid"><div class="spinner"></div></div>
+      </section>
+      <section id="members-view" hidden>
+        <header class="topbar"><div><h1>Partner & member strip</h1><p>Add public Google Drive images to the moving section at the bottom of the website.</p></div><button class="add-button" id="add-member">+ Add member</button></header>
+        <form class="setup" id="members-settings"><div style="flex:1"><h3>Website member strip</h3><p>Switch the entire section on or off and change its heading.</p><div class="form-row" style="margin-top:15px"><input name="title" placeholder="Our partners & members"><input name="subtitle" placeholder="The creative people behind the work."></div></div><label class="checkbox" style="margin:0"><input type="checkbox" name="enabled"> Section enabled</label><button class="add-button" type="submit">Save settings</button></form>
+        <div class="services-grid" id="members-grid"><div class="spinner"></div></div>
+      </section>
+      <section id="sections-view" hidden>
+        <header class="topbar"><div><h1>Website sections</h1><p>Create complete homepage service sections like Monthly Packages, Single Services or Production & Rental.</p></div><button class="add-button" id="add-section">+ Add new section</button></header>
+        <div class="services-grid" id="sections-grid"><div class="spinner"></div></div>
+      </section>
+      <section id="users-view" hidden>
+        <header class="topbar"><div><h1>User management</h1><p>View client and partner accounts, activity, access status and linked data.</p></div><input class="search" id="user-search" placeholder="Search name or email"></header>
+        <div class="stats"><article class="stat total"><small>Total users</small><strong id="users-total">0</strong></article><article class="stat new"><small>Clients</small><strong id="users-clients">0</strong></article><article class="stat complete"><small>Partners</small><strong id="users-partners">0</strong></article><article class="stat pending"><small>Banned/deleted</small><strong id="users-blocked">0</strong></article></div>
+        <section class="panel"><div class="table-wrap" id="users-table"><div class="spinner"></div></div></section>
+      </section>
+      <section id="about-view" hidden>
+        <header class="topbar"><div><h1>About & tie-ups</h1><p>Manage About-page profiles and company tie-ups shown near the homepage bottom.</p></div><a class="ghost" href="./about.html" target="_blank" style="text-decoration:none">Open About page ↗</a></header>
+        <div class="setup"><div><h3>Founder, CEO & team</h3><p>Add a public Google Drive photo, name, role and profile details.</p></div><button class="add-button" id="add-team-member">+ Add person</button></div>
+        <div class="services-grid" id="team-grid"><div class="spinner"></div></div>
+        <div class="setup" style="margin-top:28px"><div><h3>Homepage company tie-ups</h3><p>Add brand-promotion companies to the bottom of the homepage using a public Google Drive logo.</p></div><button class="add-button" id="add-brand">+ Add company</button></div>
+        <div class="services-grid" id="brands-grid"><div class="spinner"></div></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-bg" id="clear-data-modal" hidden><form class="modal" id="clear-data-form"><button type="button" class="close-modal" data-close>×</button><span class="kicker">Data cleanup</span><h2>Clear dashboard data</h2><div class="alert-error">Deleted records cannot be recovered. Website services, team profiles, showcase videos and settings will not be affected.</div><label>Choose data<select name="target" required><option value="completed">Completed orders and their messages</option><option value="cancelled">Cancelled orders and their messages</option><option value="all-orders">All client orders and messages</option><option value="all-partners">All partner applications, projects and messages</option></select></label><label>Type DELETE to confirm<input name="confirmation" required autocomplete="off" placeholder="DELETE"></label><div class="modal-actions"><button type="button" class="ghost" data-close>Cancel</button><button class="primary" style="background:var(--red)" type="submit">Delete selected data</button></div></form></div>
+
+  <div class="modal-bg" id="service-modal" hidden>
+<form class="modal" id="service-form">
+<button type="button" class="close-modal" data-close>×</button>
+<span class="kicker">Service editor</span>
+<h2 id="service-modal-title">Add service</h2>
+<input type="hidden" name="id">
+<div class="form-row">
+<label>Service name<input name="name" required maxlength="80">
+</label>
+<label>Price<input name="price" required placeholder="₹499 or On request">
+</label>
+</div>
+<label>Description<textarea name="note" rows="3" required maxlength="240">
+</textarea>
+</label>
+<div class="form-row">
+<label>Category<input name="category" required placeholder="Editing, Growth, Rental...">
+</label>
+<label>Website section<select name="section" required>
+<option value="services">Single services</option>
+<option value="packages">Monthly packages</option>
+<option value="production">Production & rental</option>
+</select>
+</label>
+</div>
+<div class="form-row">
+<label>Display order<input type="number" name="order" value="100" min="0">
+</label>
+<div>
+<label class="checkbox">
+<input type="checkbox" name="active" checked> Visible on website</label>
+<label class="checkbox">
+<input type="checkbox" name="available" checked> Available for booking</label>
+<label class="checkbox">
+<input type="checkbox" name="featured"> Mark as popular</label>
+</div>
+</div>
+<div class="modal-actions">
+<button type="button" class="ghost" data-close>Cancel</button>
+<button class="primary" type="submit" id="save-service">Save service</button>
+</div>
+</form>
+</div>
+  <div class="modal-bg" id="video-modal" hidden>
+<form class="modal" id="video-form">
+<button type="button" class="close-modal" data-close>×</button>
+<span class="kicker">Showcase video</span>
+<h2 id="video-modal-title">Add video</h2>
+<input type="hidden" name="id">
+<label>Video title<input name="title" required maxlength="100" placeholder="Premium reel edit">
+</label>
+<label>Google Drive, Instagram or YouTube link<input name="sourceUrl" type="url" required placeholder="Paste the public video link">
+</label>
+<div class="alert-error" id="video-link-error" hidden>
+</div>
+<div class="form-row">
+<label>Display order<input name="order" type="number" min="0" value="100">
+</label>
+<label class="checkbox">
+<input name="active" type="checkbox" checked> Active on website</label>
+</div>
+<div class="modal-actions">
+<button type="button" class="ghost" data-close>Cancel</button>
+<button class="primary" type="submit">Save video</button>
+</div>
+</form>
+</div>
+  <div class="modal-bg" id="order-modal" hidden>
+<form class="modal" id="order-manage-form">
+<button type="button" class="close-modal" data-close>×</button>
+<span class="kicker">Booking details</span>
+<h2>Order <span id="detail-reference">
+</span>
+</h2>
+<input type="hidden" name="id">
+<div class="detail-grid" id="order-details">
+</div>
+<h3 style="margin-top:24px">Client portal controls</h3>
+<div class="form-row"><label>Detailed status<select name="clientStatus"><option value="new">New request</option><option value="accepted">Accepted</option><option value="pending_details">Pending details</option><option value="in_progress">In progress</option><option value="review">Ready for review</option><option value="completed">Completed</option><option value="rejected">Rejected</option><option value="cancelled">Cancelled</option></select></label><label>Final price<input name="finalPrice" placeholder="₹1,499"></label></div>
+<div class="form-row"><label>Delivery deadline<input name="deadline" type="datetime-local"></label><label>Assigned team member<input name="assignedTo" placeholder="Editor or cameraman name"></label></div>
+<label>Admin note for customer<textarea name="adminNote" rows="3" placeholder="Requirements, next step or rejection reason"></textarea></label>
+<label>Delivery Google Drive / download link<input name="deliveryUrl" type="url" placeholder="https://drive.google.com/..."></label>
+<h3 style="margin-top:24px">Payment details for client</h3><div class="form-row"><label>Payment status<select name="paymentStatus"><option value="unpaid">Unpaid</option><option value="payment_requested">Payment requested</option><option value="paid">Paid</option><option value="refunded">Refunded</option></select></label><label>UPI ID<input name="paymentUpi" placeholder="creatorflow@upi"></label></div><label>Google Drive QR-code image link<input name="paymentQrUrl" type="url" placeholder="https://drive.google.com/file/d/.../view"></label><label>Bank account details<textarea name="paymentBankDetails" rows="4" placeholder="Account name, number, IFSC and bank name"></textarea></label>
+<div class="modal-actions"><button class="primary" type="submit">Save client update</button></div>
+<h3 style="margin-top:26px">Order messages</h3><div id="admin-message-list" style="background:white;border:1px solid var(--line);border-radius:12px;padding:12px;max-height:230px;overflow:auto"></div>
+<div style="display:flex;gap:8px;margin-top:10px"><input id="admin-message-input" placeholder="Write a message to the customer"><button type="button" class="add-button" id="admin-send-message">Send</button></div>
+</form>
+</div>
+  <div class="toast" id="toast" hidden>
+</div>
+
+  <div class="modal-bg" id="section-modal" hidden><form class="modal" id="section-form"><button type="button" class="close-modal" data-close>×</button><span class="kicker">Website builder</span><h2 id="section-modal-title">Add section</h2><input type="hidden" name="id"><div class="form-row"><label>Section title<input name="title" required maxlength="80" placeholder="Design services"></label><label>Small heading<input name="kicker" maxlength="50" placeholder="Made to stand out"></label></div><label>Description<textarea name="description" rows="3" maxlength="240" placeholder="Explain what this section offers."></textarea></label><div class="form-row"><label>Section key<input name="key" required maxlength="40" pattern="[a-z0-9-]+" placeholder="design-services"></label><label>Display order<input name="order" type="number" min="0" value="100"></label></div><label class="checkbox"><input type="checkbox" name="active" checked> Show section on website</label><div class="modal-actions"><button type="button" class="ghost" data-close>Cancel</button><button class="primary" type="submit">Save section</button></div></form></div>
+
+  <div class="modal-bg" id="member-modal" hidden><form class="modal" id="member-form"><button type="button" class="close-modal" data-close>×</button><span class="kicker">Member editor</span><h2 id="member-modal-title">Add member</h2><input type="hidden" name="id"><div class="form-row"><label>Name / title<input name="name" required maxlength="80" placeholder="Aarav — Video Editor"></label><label>Display order<input name="order" type="number" value="100"></label></div><label>Google Drive image link<input name="imageUrl" type="url" required placeholder="https://drive.google.com/file/d/.../view"></label><label>Short label<input name="label" maxlength="100" placeholder="CreatorFlow Partner"></label><label class="checkbox"><input type="checkbox" name="active" checked> Show on website</label><div class="modal-actions"><button type="button" class="ghost" data-close>Cancel</button><button class="primary" type="submit">Save member</button></div></form></div>
+
+  <div class="modal-bg" id="worktype-modal" hidden><form class="modal" id="worktype-form"><button type="button" class="close-modal" data-close>×</button><span class="kicker">Partner role template</span><h2 id="worktype-modal-title">Add work type</h2><input type="hidden" name="id"><div class="form-row"><label>Role title<input name="title" required maxlength="80" placeholder="Drone Pilot"></label><label>Display order<input name="order" type="number" min="0" value="100"></label></div><label>Card description<textarea name="description" required rows="3" maxlength="220" placeholder="Short description shown on the role card."></textarea></label><label>Application help text<textarea name="helpText" required rows="3" maxlength="260" placeholder="Tell applicants what information they should provide."></textarea></label><label class="checkbox"><input type="checkbox" name="isOther"> Ask applicant to enter a custom service name</label><label class="checkbox"><input type="checkbox" name="active" checked> Show on Become a Partner page</label><div class="modal-actions"><button type="button" class="ghost" data-close>Cancel</button><button class="primary" type="submit">Save work type</button></div></form></div>
+
+  <div class="modal-bg" id="team-modal" hidden><form class="modal" id="team-form"><button type="button" class="close-modal" data-close>×</button><span class="kicker">Team profile</span><h2 id="team-modal-title">Add person</h2><input type="hidden" name="id"><div class="form-row"><label>Full name<input name="name" required maxlength="80" placeholder="Founder name"></label><label>Role / designation<input name="role" required maxlength="80" placeholder="Founder & CEO"></label></div><label>Google Drive photo link<input name="imageUrl" type="url" required placeholder="https://drive.google.com/file/d/.../view"></label><label>About this person<textarea name="details" rows="5" required maxlength="800" placeholder="Experience, vision and how they help CreatorFlow."></textarea></label><div class="form-row"><label>Display order<input name="order" type="number" min="0" value="100"></label><label class="checkbox"><input type="checkbox" name="active" checked> Show on About page</label></div><div class="modal-actions"><button type="button" class="ghost" data-close>Cancel</button><button class="primary" type="submit">Save profile</button></div></form></div>
+
+  <div class="modal-bg" id="brand-modal" hidden><form class="modal" id="brand-form"><button type="button" class="close-modal" data-close>×</button><span class="kicker">Company tie-up</span><h2 id="brand-modal-title">Add company</h2><input type="hidden" name="id"><div class="form-row"><label>Company name<input name="name" required maxlength="100" placeholder="Company or brand name"></label><label>Tie-up type<input name="relationship" maxlength="100" placeholder="Brand promotion partner"></label></div><label>Google Drive logo link<input name="imageUrl" type="url" required placeholder="https://drive.google.com/file/d/.../view"></label><label>Short details<textarea name="details" rows="3" maxlength="300" placeholder="Campaign, collaboration or partnership details."></textarea></label><div class="form-row"><label>Company website (optional)<input name="website" type="url" placeholder="https://company.com"></label><label>Display order<input name="order" type="number" min="0" value="100"></label></div><label class="checkbox"><input type="checkbox" name="active" checked> Show on About page</label><div class="modal-actions"><button type="button" class="ghost" data-close>Cancel</button><button class="primary" type="submit">Save company</button></div></form></div>
+  <div class="modal-bg" id="partner-manage-modal" hidden><form class="modal" id="partner-manage-form"><button type="button" class="close-modal" data-close>×</button><span class="kicker">Partner management</span><h2 id="partner-manage-title">Manage partner</h2><input type="hidden" name="id"><div class="form-row"><label>Status<select name="status"><option value="new">New</option><option value="contacted">Contacted</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label><label>Project status<input name="projectStatus" placeholder="Assigned / In progress / Completed"></label></div><label>Admin note<textarea name="adminNote" rows="2" placeholder="Approval or rejection update"></textarea></label><label>Assigned project title<input name="projectTitle" placeholder="Edit 10 premium reels"></label><label>Project brief<textarea name="projectBrief" rows="4" placeholder="Work details, requirements and instructions"></textarea></label><div class="form-row"><label>Payment<input name="projectPayment" placeholder="₹1,500 after completion"></label><label>Deadline<input name="projectDeadline" type="datetime-local"></label></div><label>Delivery / work link<input name="projectDeliveryUrl" type="url" placeholder="Google Drive link"></label><div class="modal-actions"><button class="primary" type="submit">Save partner update</button></div><h3>Partner messages</h3><div id="partner-admin-messages" style="max-height:220px;overflow:auto;background:white;border:1px solid var(--line);padding:10px"></div><div style="display:flex;gap:8px;margin-top:8px"><input id="partner-admin-message" placeholder="Write message"><button type="button" class="add-button" id="partner-admin-send">Send</button></div></form></div>
+
+  <script type="module">
+    import{initializeApp}from"https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+    import{getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut}from"https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+    import{getFirestore,collection,onSnapshot,query,orderBy,where,doc,getDoc,updateDoc,setDoc,addDoc,deleteDoc,serverTimestamp,getDocs,writeBatch}from"https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+    const config={apiKey:"AIzaSyAX7aQr5bQNTeRMF3EiXhHzVdAUdouqfD8",authDomain:"creatorflow-2e633.firebaseapp.com",projectId:"creatorflow-2e633",storageBucket:"creatorflow-2e633.firebasestorage.app",messagingSenderId:"957859362731",appId:"1:957859362731:web:cc6e688950c279cf9104ee",measurementId:"G-T040ZW0ZK6"};
+    const ADMIN="labibeddie@gmail.com",app=initializeApp(config),auth=getAuth(app),db=getFirestore(app);let orders=[],services=[],videos=[],partners=[],members=[],websiteSections=[],teamMembers=[],brandTieups=[],users=[],partnerCategories=[],activeOrderId="",activePartnerId="",unsubOrderMessages,unsubPartnerMessages,showcaseSettings={enabled:false,title:"See what we create.",subtitle:"A selection of edits, reels and videos produced for growing creators."},membersSettings={enabled:false,title:"Our partners & members",subtitle:"The creative people behind the work."},orderFilter="new",search="",partnerSearch="",unsubOrders,unsubServices,unsubVideos,unsubSettings,unsubPartners,unsubMembers,unsubMemberSettings,unsubSections,unsubTeam,unsubBrands,unsubUsers,unsubWorkTypes,userSearch="";
+    const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s),esc=v=>String(v??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
+    function toast(message){const t=$("#toast");t.textContent=message;t.hidden=false;clearTimeout(t._timer);t._timer=setTimeout(()=>t.hidden=true,2600)}
+    function showApp(user){$("#login-page").hidden=true;$("#admin-app").hidden=false;$("#admin-email").textContent=user.email;subscribe()}
+    function showLogin(message=""){$("#login-page").hidden=false;$("#admin-app").hidden=true;if(message){$("#login-error").textContent=message;$("#login-error").hidden=false}}
+    onAuthStateChanged(auth,async user=>{if(user&&user.email?.toLowerCase()===ADMIN){showApp(user)}else{if(user)await signOut(auth);showLogin(user?"This account is not authorized.":"")}});
+    $("#login-form").addEventListener("submit",async e=>{e.preventDefault();const b=$("#login-button"),d=new FormData(e.currentTarget);b.disabled=true;b.textContent="Signing in...";$("#login-error").hidden=true;try{const email=String(d.get("email")).toLowerCase();if(email!==ADMIN)throw new Error("Only the authorized admin email can sign in.");await signInWithEmailAndPassword(auth,email,String(d.get("password")))}catch(err){$("#login-error").textContent=err.code==="auth/invalid-credential"?"Incorrect email or password.":err.message;$("#login-error").hidden=false}finally{b.disabled=false;b.textContent="Sign in to dashboard"}});
+    $("#logout").onclick=()=>signOut(auth);
+    function subscribe(){unsubOrders?.();unsubServices?.();unsubVideos?.();unsubSettings?.();unsubPartners?.();unsubMembers?.();unsubMemberSettings?.();unsubSections?.();unsubTeam?.();unsubBrands?.();unsubUsers?.();unsubWorkTypes?.();unsubOrders=onSnapshot(query(collection(db,"bookings"),orderBy("createdAt","desc")),snap=>{orders=snap.docs.map(x=>({id:x.id,...x.data()}));renderOrders()},err=>$("#orders-table").innerHTML=`<div class="empty">${esc(err.message)}</div>`);unsubServices=onSnapshot(query(collection(db,"services"),orderBy("order","asc")),snap=>{services=snap.docs.map(x=>({id:x.id,...x.data()}));renderServices()},err=>$("#services-grid").innerHTML=`<div class="empty">${esc(err.message)}</div>`);unsubVideos=onSnapshot(query(collection(db,"showcaseVideos"),orderBy("order","asc")),snap=>{videos=snap.docs.map(x=>({id:x.id,...x.data()}));renderVideos()},err=>$("#videos-grid").innerHTML=`<div class="empty">${esc(err.message)}</div>`);unsubSettings=onSnapshot(doc(db,"siteSettings","showcase"),snap=>{if(snap.exists())showcaseSettings={...showcaseSettings,...snap.data()};renderShowcaseSettings()});unsubPartners=onSnapshot(query(collection(db,"partnerApplications"),orderBy("createdAt","desc")),snap=>{partners=snap.docs.map(x=>({id:x.id,...x.data()}));renderPartners()},err=>$("#partners-table").innerHTML=`<div class="empty">${esc(err.message)}</div>`);unsubMembers=onSnapshot(query(collection(db,"featuredMembers"),orderBy("order","asc")),snap=>{members=snap.docs.map(x=>({id:x.id,...x.data()}));renderMembers()},err=>$("#members-grid").innerHTML=`<div class="empty">${esc(err.message)}</div>`);unsubMemberSettings=onSnapshot(doc(db,"siteSettings","members"),snap=>{if(snap.exists())membersSettings={...membersSettings,...snap.data()};renderMembersSettings()});unsubSections=onSnapshot(query(collection(db,"websiteSections"),orderBy("order","asc")),snap=>{websiteSections=snap.docs.map(x=>({id:x.id,...x.data()}));renderSections();updateServiceSectionOptions();renderDashboard();syncHomeLayout()},err=>$("#sections-grid").innerHTML=`<div class="empty">${esc(err.message)}</div>`);unsubTeam=onSnapshot(query(collection(db,"teamMembers"),orderBy("order","asc")),snap=>{teamMembers=snap.docs.map(x=>({id:x.id,...x.data()}));renderTeam()},err=>$("#team-grid").innerHTML=`<div class="empty">${esc(err.message)}</div>`);unsubBrands=onSnapshot(query(collection(db,"brandTieups"),orderBy("order","asc")),snap=>{brandTieups=snap.docs.map(x=>({id:x.id,...x.data()}));renderBrands()},err=>$("#brands-grid").innerHTML=`<div class="empty">${esc(err.message)}</div>`);unsubUsers=onSnapshot(collection(db,"users"),snap=>{users=snap.docs.map(x=>({id:x.id,...x.data()}));renderUsers()},err=>$("#users-table").innerHTML=`<div class="empty">${esc(err.message)} — publish the included users rules.</div>`);unsubWorkTypes=onSnapshot(query(collection(db,"partnerCategories"),orderBy("order","asc")),snap=>{partnerCategories=snap.docs.map(x=>({id:x.id,...x.data()}));renderWorkTypes()},err=>$("#worktypes-grid").innerHTML=`<div class="empty">${esc(err.message)}</div>`) }
+    const money=v=>Number(String(v||"").replace(/[^0-9.]/g,"").split(".")[0]||0),moneyText=v=>`₹${Math.round(v).toLocaleString("en-IN")}`;
+    function dashRows(list,empty,map){return list.length?list.slice(0,6).map(map).join(""):`<div class="empty" style="padding:30px 15px">${empty}</div>`}
+    function renderDashboard(){const completed=orders.filter(x=>x.status==="completed"),running=orders.filter(x=>x.status==="pending"),rentals=running.filter(x=>/rent|mic|tripod|light|camera|gear/i.test([x.category,x.service].join(" "))),approved=partners.filter(x=>x.status==="approved"),live=videos.filter(x=>x.active!==false);$("#dash-revenue").textContent=moneyText(completed.reduce((s,x)=>s+money(x.price),0));$("#dash-running").textContent=running.length;$("#dash-rentals").textContent=rentals.length;$("#dash-partners").textContent=approved.length;$("#dash-live-work").textContent=live.length;$("#dash-work-list").innerHTML=dashRows(running,"No running work.",x=>`<div class="dash-row"><div><b>${esc(x.service)}</b><small>${esc(x.name)} · ${esc(x.phone)}</small></div><strong>${esc(x.price)}</strong></div>`);$("#dash-rental-list").innerHTML=dashRows(rentals,"No items currently on rent.",x=>`<div class="dash-row"><div><b>${esc(x.service)}</b><small>${esc(x.name)} · ${esc(x.preferredDate||"Date not set")}</small></div><strong>Pending</strong></div>`);$("#dash-partner-list").innerHTML=dashRows(approved,"No approved partners.",x=>`<div class="dash-row"><div><b>${esc(x.name)}</b><small>${esc(x.role)} · ${esc(x.city)}</small></div><strong>${esc(x.phone)}</strong></div>`);$("#dash-complete-list").innerHTML=dashRows(completed,"No completed orders.",x=>`<div class="dash-row"><div><b>${esc(x.service)}</b><small>${esc(x.name)}</small></div><strong>${esc(x.price)}</strong></div>`)}
+    $("#refresh-dashboard").onclick=()=>{subscribe();toast("Dashboard refreshed")};
+    function renderOrders(){renderDashboard();const count=s=>orders.filter(x=>(x.status||"new")===s).length;$("#count-total").textContent=orders.length;["new","pending","completed","cancelled"].forEach(s=>{$(`#count-${s}`).textContent=count(s);$(`#tab-count-${s}`).textContent=count(s)});$("#order-view-title").textContent=`${orderFilter} orders`;const list=orders.filter(x=>(x.status||"new")===orderFilter&&[x.name,x.phone,x.email,x.service,x.reference].join(" ").toLowerCase().includes(search));if(!list.length){$("#orders-table").innerHTML=`<div class="empty">No ${orderFilter} orders.</div>`;return}$("#orders-table").innerHTML=`<table>
+<thead>
+<tr>
+<th>Customer</th>
+<th>Service</th>
+<th>Price</th>
+<th>Date</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>${list.map(x=>`<tr>
+<td class="customer">
+<b>${esc(x.name)}</b>
+<small>${esc(x.phone)} · ${esc(x.email)}</small>
+</td>
+<td class="service-name">
+<b>${esc(x.service)}</b>
+<small>${esc(x.reference)}</small>
+</td>
+<td>
+<b>${esc(x.price)}</b>
+</td>
+<td>${esc(x.preferredDate||formatDate(x.createdAt))}</td>
+<td>
+<select class="status-select" data-order-status="${x.id}">
+<option value="new" ${(x.status||"new")==="new"?"selected":""}>New</option>
+<option value="pending" ${x.status==="pending"?"selected":""}>Pending</option>
+<option value="completed" ${x.status==="completed"?"selected":""}>Completed</option>
+<option value="cancelled" ${x.status==="cancelled"?"selected":""}>Cancelled</option>
+</select>
+</td>
+<td>
+<button class="icon-btn" data-view-order="${x.id}">View</button>
+</td>
+</tr>`).join("")}</tbody>
+</table>`}
+    function formatDate(ts){try{return ts?.toDate().toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"})||"-"}catch{return"-"}}
+    $("#orders-table").addEventListener("change",async e=>{const id=e.target.dataset.orderStatus;if(!id)return;const order=orders.find(x=>x.id===id),previous=order.status||"new",next=e.target.value;order.status=next;renderOrders();try{await updateDoc(doc(db,"bookings",id),{status:next,updatedAt:serverTimestamp()});toast(`Order moved to ${next}`)}catch(err){order.status=previous;renderOrders();toast("Update failed: "+err.message)}});
+    function localDateTime(value){try{const d=value?.toDate?value.toDate():value?new Date(value):null;if(!d||isNaN(d))return"";const z=n=>String(n).padStart(2,"0");return`${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}T${z(d.getHours())}:${z(d.getMinutes())}`}catch{return""}}
+    function renderAdminMessages(list){$("#admin-message-list").innerHTML=list.length?list.sort((a,b)=>(a.createdAt?.seconds||0)-(b.createdAt?.seconds||0)).map(m=>`<div style="padding:9px 10px;margin:6px 0;border-radius:9px;background:${m.senderRole==="admin"?"#eeeafe":"#f4f6fb"}"><b>${m.senderRole==="admin"?"CreatorFlow":"Customer"}</b><div style="margin-top:4px;line-height:1.45">${esc(m.text)}</div></div>`).join(""):'<div class="empty" style="padding:20px">No messages yet.</div>'}
+    $("#orders-table").addEventListener("click",e=>{const id=e.target.dataset.viewOrder;if(!id)return;const x=orders.find(o=>o.id===id),f=$("#order-manage-form");activeOrderId=id;$("#detail-reference").textContent=esc(x.reference||"");$("#order-details").innerHTML=[["Customer",x.name],["Phone",x.phone],["Email",x.email],["Service",x.service],["Price",x.price],["Platform",x.platform],["Preferred date",x.preferredDate||"Not selected"],["Status",x.status||"new"],["Details",x.details||"No additional details"],["Cancellation requested",x.cancellationRequested?"Yes":"No"],["Revision requested",x.revisionRequested?"Yes":"No"],["Client approved",x.clientApproved?"Yes":"No"]].map(([a,b],i)=>`<div class="detail-item ${i===8?"full":""}">
+<small>${esc(a)}</small>
+<b>${esc(b)}</b>
+</div>`).join("");f.elements.id.value=id;f.elements.clientStatus.value=x.clientStatus||x.status||"new";f.elements.finalPrice.value=x.finalPrice||x.price||"";f.elements.deadline.value=localDateTime(x.deadline);f.elements.assignedTo.value=x.assignedTo||"";f.elements.adminNote.value=x.adminNote||"";f.elements.deliveryUrl.value=x.deliveryUrl||"";unsubOrderMessages?.();unsubOrderMessages=onSnapshot(query(collection(db,"orderMessages"),where("bookingId","==",id)),s=>renderAdminMessages(s.docs.map(d=>d.data())),err=>renderAdminMessages([{senderRole:"admin",text:"Messages unavailable: "+err.message}]));$("#order-modal").hidden=false});
+    $("#order-manage-form").onsubmit=async e=>{e.preventDefault();const d=new FormData(e.currentTarget),id=String(d.get("id")||""),clientStatus=String(d.get("clientStatus")||"new"),deadline=String(d.get("deadline")||"");try{await updateDoc(doc(db,"bookings",id),{clientStatus,finalPrice:String(d.get("finalPrice")||""),deadline:deadline?new Date(deadline):null,assignedTo:String(d.get("assignedTo")||""),adminNote:String(d.get("adminNote")||""),deliveryUrl:String(d.get("deliveryUrl")||""),status:clientStatus==="completed"?"completed":["cancelled","rejected"].includes(clientStatus)?"cancelled":clientStatus==="new"?"new":"pending",updatedAt:serverTimestamp()});toast("Client portal updated")}catch(err){toast("Update failed: "+err.message)}};
+    $("#admin-send-message").onclick=async()=>{const input=$("#admin-message-input"),text=input.value.trim(),order=orders.find(x=>x.id===activeOrderId);if(!text||!activeOrderId)return;try{await addDoc(collection(db,"orderMessages"),{bookingId:activeOrderId,userId:order?.userId||"",senderId:auth.currentUser.uid,senderRole:"admin",text,createdAt:serverTimestamp()});input.value=""}catch(err){toast("Message failed: "+err.message)}};
+    $("#orders-table").addEventListener("click",e=>{const id=e.target.dataset.viewOrder;if(!id)return;const x=orders.find(o=>o.id===id),f=$("#order-manage-form");setTimeout(()=>{f.elements.paymentStatus.value=x.paymentStatus||"unpaid";f.elements.paymentUpi.value=x.paymentUpi||"";f.elements.paymentQrUrl.value=x.paymentQrUrl||"";f.elements.paymentBankDetails.value=x.paymentBankDetails||""},0)});
+    $("#order-manage-form").addEventListener("submit",async e=>{const d=new FormData(e.currentTarget),id=String(d.get("id")||"");try{await updateDoc(doc(db,"bookings",id),{paymentStatus:String(d.get("paymentStatus")||"unpaid"),paymentUpi:String(d.get("paymentUpi")||""),paymentQrUrl:String(d.get("paymentQrUrl")||""),paymentBankDetails:String(d.get("paymentBankDetails")||""),updatedAt:serverTimestamp()})}catch(err){toast("Payment details failed: "+err.message)}});
+    const orderDeleteObserver=new MutationObserver(()=>{$$("#orders-table [data-view-order]").forEach(button=>{if(button.parentElement.querySelector("[data-delete-order]"))return;button.insertAdjacentHTML("afterend",` <button class="icon-btn" style="color:var(--red)" data-delete-order="${button.dataset.viewOrder}">Delete</button>`)})});orderDeleteObserver.observe($("#orders-table"),{childList:true,subtree:true});$("#orders-table").addEventListener("click",async e=>{const id=e.target.dataset.deleteOrder;if(!id||!confirm("Delete this order and all client messages permanently?"))return;try{const messages=await getDocs(query(collection(db,"orderMessages"),where("bookingId","==",id))),batch=writeBatch(db);messages.docs.forEach(x=>batch.delete(x.ref));batch.delete(doc(db,"bookings",id));await batch.commit();toast("Order data deleted permanently")}catch(err){toast("Delete failed: "+err.message)}});
+    $("#order-filters").onclick=e=>{const button=e.target.closest("[data-status]");if(!button)return;orderFilter=button.dataset.status;$$('.filter').forEach(x=>x.classList.toggle('active',x===button));renderOrders()};$("#order-search").oninput=e=>{search=e.target.value.toLowerCase();renderOrders()};$("#refresh-orders").onclick=()=>{subscribe();toast("Dashboard refreshed")};
+    function renderServices(){renderDashboard();$("#seed-box").hidden=services.length>0;if(!services.length){$("#services-grid").innerHTML='<div class="empty">No editable services yet.</div>';return}$("#services-grid").innerHTML=services.map(x=>{const state=x.active===false?["cancelled","Hidden"]:x.available===false?["pending","Not available"]:["completed","Available"];return `<article class="service-card ${x.active===false||x.available===false?"inactive":""}">
+<div class="line1">
+<span class="type">${esc(x.category)} · ${esc(x.section)}</span>
+<span class="badge ${state[0]}">${state[1]}</span>
+</div>
+<h3>${esc(x.name)}</h3>
+<p>${esc(x.note)}</p>
+<div class="service-foot">
+<strong>${esc(x.price)}</strong>
+<div>
+<button class="icon-btn" data-toggle-availability="${x.id}">${x.available===false?"Make available":"Mark unavailable"}</button>
+<button class="icon-btn" data-toggle-service="${x.id}">${x.active===false?"Show":"Hide"}</button>
+<button class="icon-btn" data-edit-service="${x.id}">Edit</button>
+</div>
+</div>
+</article>`}).join("")}
+    function updateServiceSectionOptions(){const select=$("#service-form select[name=section]"),value=select.value;select.querySelectorAll("option[data-custom]").forEach(x=>x.remove());websiteSections.forEach(x=>select.insertAdjacentHTML("beforeend",`<option data-custom value="${esc(x.key)}">${esc(x.title)}</option>`));if([...select.options].some(x=>x.value===value))select.value=value}
+    function openService(x={}){const f=$("#service-form");updateServiceSectionOptions();f.reset();f.elements.id.value=x.id||"";f.elements.name.value=x.name||"";f.elements.price.value=x.price||"";f.elements.note.value=x.note||"";f.elements.category.value=x.category||"";f.elements.section.value=x.section||"services";f.elements.order.value=x.order??100;f.elements.active.checked=x.active!==false;f.elements.available.checked=x.available!==false;f.elements.featured.checked=!!x.featured;$("#service-modal-title").textContent=x.id?"Edit service":"Add service";$("#service-modal").hidden=false}
+    $("#add-service").onclick=()=>openService();$("#services-grid").onclick=async e=>{const edit=e.target.dataset.editService,toggle=e.target.dataset.toggleService,availability=e.target.dataset.toggleAvailability;if(edit)openService(services.find(x=>x.id===edit));if(toggle){const x=services.find(s=>s.id===toggle);await updateDoc(doc(db,"services",toggle),{active:x.active===false,updatedAt:serverTimestamp()});toast("Website visibility updated")}if(availability){const x=services.find(s=>s.id===availability);await updateDoc(doc(db,"services",availability),{available:x.available===false,updatedAt:serverTimestamp()});toast(x.available===false?"Service is available again":"Service marked not available")}};
+    $("#service-form").onsubmit=async e=>{e.preventDefault();const f=e.currentTarget,d=new FormData(f),id=String(d.get("id")||""),payload={name:String(d.get("name")),price:String(d.get("price")),note:String(d.get("note")),category:String(d.get("category")),section:String(d.get("section")),order:Number(d.get("order")||100),active:d.get("active")==="on",available:d.get("available")==="on",featured:d.get("featured")==="on",updatedAt:serverTimestamp()};try{id?await updateDoc(doc(db,"services",id),payload):await addDoc(collection(db,"services"),{...payload,createdAt:serverTimestamp()});$("#service-modal").hidden=true;toast(id?"Service updated":"Service added")}catch(err){toast("Save failed: "+err.message)}};
+    function detectVideo(url){try{const u=new URL(url);if(u.hostname.includes("youtu.be")){const id=u.pathname.split("/").filter(Boolean)[0];if(id)return{platform:"youtube",embedUrl:`https://www.youtube.com/embed/${id}`}}if(u.hostname.includes("youtube.com")){let id=u.searchParams.get("v");const parts=u.pathname.split("/").filter(Boolean);if(!id&&["shorts","embed","live"].includes(parts[0]))id=parts[1];if(id)return{platform:"youtube",embedUrl:`https://www.youtube.com/embed/${id}`}}if(u.hostname.includes("instagram.com")){const parts=u.pathname.split("/").filter(Boolean);if(["p","reel","tv"].includes(parts[0])&&parts[1])return{platform:"instagram",embedUrl:`https://www.instagram.com/${parts[0]}/${parts[1]}/embed`}}if(u.hostname.includes("drive.google.com")){const match=u.pathname.match(/\/file\/d\/([^/]+)/);const id=match?.[1]||u.searchParams.get("id");if(id)return{platform:"drive",embedUrl:`https://drive.google.com/file/d/${id}/preview`}}}catch{}return null}
+    function renderShowcaseSettings(){const f=$("#showcase-settings");f.elements.enabled.checked=showcaseSettings.enabled===true;f.elements.title.value=showcaseSettings.title||"";f.elements.subtitle.value=showcaseSettings.subtitle||""}
+    function renderVideos(){renderDashboard();if(!videos.length){$("#videos-grid").innerHTML='<div class="empty">No showcase videos yet. Add your first Google Drive, Instagram or YouTube link.</div>';return}$("#videos-grid").innerHTML=videos.map(x=>`<article class="service-card ${x.active===false?"inactive":""}">
+<div class="line1">
+<span class="type">${esc(x.platform)}</span>
+<span class="badge ${x.active===false?"cancelled":"completed"}">${x.active===false?"Hidden":"Active"}</span>
+</div>
+<h3>${esc(x.title)}</h3>
+<p style="word-break:break-all">${esc(x.sourceUrl)}</p>
+<div class="service-foot">
+<strong>#${esc(x.order??100)}</strong>
+<div>
+<button class="icon-btn" data-toggle-video="${x.id}">${x.active===false?"Show":"Hide"}</button>
+<button class="icon-btn" data-edit-video="${x.id}">Edit</button>
+<button class="icon-btn" data-delete-video="${x.id}">Delete</button>
+</div>
+</div>
+</article>`).join("")}
+    function openVideo(x={}){const f=$("#video-form");f.reset();f.elements.id.value=x.id||"";f.elements.title.value=x.title||"";f.elements.sourceUrl.value=x.sourceUrl||"";f.elements.order.value=x.order??100;f.elements.active.checked=x.active!==false;$("#video-link-error").hidden=true;$("#video-modal-title").textContent=x.id?"Edit video":"Add video";$("#video-modal").hidden=false}
+    $("#add-video").onclick=()=>openVideo();
+    $("#showcase-settings").onsubmit=async e=>{e.preventDefault();const d=new FormData(e.currentTarget);await setDoc(doc(db,"siteSettings","showcase"),{enabled:d.get("enabled")==="on",title:String(d.get("title")||"See what we create."),subtitle:String(d.get("subtitle")||""),updatedAt:serverTimestamp()},{merge:true});toast("Showcase settings saved")};
+    $("#video-form").onsubmit=async e=>{e.preventDefault();const f=e.currentTarget,d=new FormData(f),id=String(d.get("id")||""),sourceUrl=String(d.get("sourceUrl")||"").trim(),detected=detectVideo(sourceUrl);if(!detected){$("#video-link-error").textContent="Link not recognized. Paste a public Google Drive file, Instagram post/reel, or YouTube video link.";$("#video-link-error").hidden=false;return}const payload={title:String(d.get("title")),sourceUrl,...detected,order:Number(d.get("order")||100),active:d.get("active")==="on",updatedAt:serverTimestamp()};try{id?await updateDoc(doc(db,"showcaseVideos",id),payload):await addDoc(collection(db,"showcaseVideos"),{...payload,createdAt:serverTimestamp()});$("#video-modal").hidden=true;toast(id?"Video updated":"Video added")}catch(err){toast("Save failed: "+err.message)}};
+    $("#videos-grid").onclick=async e=>{const edit=e.target.dataset.editVideo,toggle=e.target.dataset.toggleVideo,remove=e.target.dataset.deleteVideo;if(edit)openVideo(videos.find(x=>x.id===edit));if(toggle){const x=videos.find(v=>v.id===toggle);await updateDoc(doc(db,"showcaseVideos",toggle),{active:x.active===false,updatedAt:serverTimestamp()});toast("Video visibility updated")}if(remove&&confirm("Delete this showcase video?")){await deleteDoc(doc(db,"showcaseVideos",remove));toast("Video deleted")}};
+    const defaults=[
+      ["Starter","₹1,499","10 premium reels, 10 covers, captions, hashtags and 20 hook ideas.","Monthly package","packages",false], ["Growth","₹2,499","20 premium reels, scripts, hooks, covers, captions and content calendar.","Monthly package","packages",true],["Creator 360","₹4,999","42 premium reels plus strategy, analytics, automation and sponsor support.","Monthly package","packages",false],
+      ["1 Reel Edit","₹149","Cuts, captions, music and basic colour grade.","Editing","services",false],["Premium Reel Edit","₹299","Motion graphics, B-roll, sound design and animated captions.","Editing","services",false],["YouTube Video Edit","₹999","Clean edit up to 10 minutes with music and graphics.","Editing","services",false],["Premium YouTube Edit","₹1,499","Advanced edit up to 10 minutes with motion and sound design.","Editing","services",false],["Reel Cover","₹99","Branded cover with strong title hierarchy.","Design","services",false],["YouTube Thumbnail","₹199","High-CTR thumbnail concept with one revision.","Design","services",false],["Reel Script + Hooks","₹149","30-60 second script, 3 hooks and a clear CTA.","Strategy","services",false],["YouTube Script","₹499","Research-led script up to 8 minutes with retention beats.","Strategy","services",false],["Content Audit","₹299","Profile review, content gaps and 10 practical improvements.","Strategy","services",false],["Automation Setup","₹999+","Comment-to-DM, lead capture or Telegram workflow.","Growth","services",false],["Sponsor Media Kit","₹599","Creator profile, audience data and professional rate card.","Growth","services",false],["Sponsor Outreach","₹1,499/mo","Sponsor target list and personalized outreach.","Growth","services",false],
+      ["Hire a Cameraman","₹399+ / session","Up to 2 hours of on-location shooting support.","Production","production",false],["Mic Rental","₹79 / day","Wired or wireless mic, subject to local availability.","Rental","production",false],["Lighting Kit Rental","₹149 / day","Basic creator lighting for reels, products or interviews.","Rental","production",false],["Tripod Rental","₹49 / day","Phone or camera tripod for stable recording.","Rental","production",false],["Complete Shoot Setup","₹499+","Cameraman, microphone, lighting and tripod.","Production","production",true],["Reel Shoot + 5 Edits","₹1,999+","On-location shoot plus 5 edited short reels.","Production","production",false],["Podcast Recording Support","₹1,499+","Basic camera, audio and lighting for one session.","Production","production",false],["Studio Booking Assistance","On request","We find a suitable local studio within your budget.","Production","production",false]
+    ];
+    $("#seed-services").onclick=async()=>{if(services.length)return;const b=writeBatch(db);defaults.forEach((x,i)=>b.set(doc(collection(db,"services")),{name:x[0],price:x[1],note:x[2],category:x[3],section:x[4],featured:x[5],active:true,available:true,order:i+1,createdAt:serverTimestamp(),updatedAt:serverTimestamp()}));await b.commit();toast("Current services imported")};
+    const serviceOrderObserver=new MutationObserver(()=>{$$("#services-grid [data-edit-service]").forEach(button=>{const box=button.parentElement,id=button.dataset.editService;if(box.querySelector("[data-move-service]"))return;button.insertAdjacentHTML("beforebegin",`<button class="icon-btn" title="Move up" data-move-service="up" data-service-id="${id}">↑</button><button class="icon-btn" title="Move down" data-move-service="down" data-service-id="${id}">↓</button>`)})});serviceOrderObserver.observe($("#services-grid"),{childList:true,subtree:true});
+    $("#services-grid").addEventListener("click",async e=>{const direction=e.target.dataset.moveService,id=e.target.dataset.serviceId;if(!direction||!id)return;const current=services.find(x=>x.id===id),list=services.filter(x=>x.section===current.section).sort((a,b)=>(a.order??100)-(b.order??100)),from=list.findIndex(x=>x.id===id),to=direction==="up"?from-1:from+1;if(to<0||to>=list.length){toast(direction==="up"?"Already at the top":"Already at the bottom");return}[list[from],list[to]]=[list[to],list[from]];try{const batch=writeBatch(db);list.forEach((x,i)=>batch.update(doc(db,"services",x.id),{order:i+1,updatedAt:serverTimestamp()}));await batch.commit();toast(`Service moved ${direction}`)}catch(err){toast("Reorder failed: "+err.message)}});
+    let homeSectionOrder=["packages","services","production"],homeLayoutLoaded=false;const coreSectionLabels={packages:"Monthly Packages",services:"Single Services",production:"Production & Rental"};function homeSectionLabels(){return{...coreSectionLabels,...Object.fromEntries(websiteSections.map(x=>[x.key,x.title]))}}function syncHomeLayout(){if(!homeLayoutLoaded)return;const labels=homeSectionLabels(),valid=Object.keys(labels),next=[...homeSectionOrder.filter(x=>valid.includes(x)),...valid.filter(x=>!homeSectionOrder.includes(x))];if(next.join("|")!==homeSectionOrder.join("|")){homeSectionOrder=next;setDoc(doc(db,"siteSettings","homeLayout"),{order:homeSectionOrder,updatedAt:serverTimestamp()},{merge:true}).catch(err=>toast("Layout sync failed: "+err.message))}renderHomeLayout()}function renderHomeLayout(){const labels=homeSectionLabels();$("#home-layout-list").innerHTML=homeSectionOrder.map((key,i)=>`<div style="display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid var(--line);border-radius:11px;padding:12px 14px"><div><small style="color:var(--muted);font-weight:800">Position ${i+1}</small><b style="display:block;margin-top:4px">${esc(labels[key]||key)}</b><small style="color:var(--muted)">${coreSectionLabels[key]?"Built-in section":"Custom section"}</small></div><div><button class="icon-btn" data-move-home="up" data-home-key="${key}" ${i===0?"disabled":""}>↑ Move up</button><button class="icon-btn" data-move-home="down" data-home-key="${key}" ${i===homeSectionOrder.length-1?"disabled":""}>↓ Move down</button></div></div>`).join("")}onSnapshot(doc(db,"siteSettings","homeLayout"),s=>{const saved=s.data()?.order;if(Array.isArray(saved)&&saved.length)homeSectionOrder=saved;homeLayoutLoaded=true;syncHomeLayout()});$("#home-layout-list").onclick=async e=>{const direction=e.target.dataset.moveHome,key=e.target.dataset.homeKey;if(!direction||!key)return;const from=homeSectionOrder.indexOf(key),to=direction==="up"?from-1:from+1;if(to<0||to>=homeSectionOrder.length)return;[homeSectionOrder[from],homeSectionOrder[to]]=[homeSectionOrder[to],homeSectionOrder[from]];renderHomeLayout();try{await setDoc(doc(db,"siteSettings","homeLayout"),{order:homeSectionOrder,updatedAt:serverTimestamp()},{merge:true});toast("Homepage section order updated")}catch(err){toast("Layout save failed: "+err.message)}};
+    $("#open-clear-data").onclick=()=>{$("#clear-data-form").reset();$("#clear-data-modal").hidden=false};async function deleteRefs(refs){for(let i=0;i<refs.length;i+=450){const batch=writeBatch(db);refs.slice(i,i+450).forEach(ref=>batch.delete(ref));await batch.commit()}}
+    $("#clear-data-form").onsubmit=async e=>{e.preventDefault();const d=new FormData(e.currentTarget),target=String(d.get("target")),confirmation=String(d.get("confirmation")||"").trim();if(confirmation!=="DELETE"){toast("Type DELETE exactly to confirm");return}try{let refs=[];if(target==="all-partners"){const apps=await getDocs(collection(db,"partnerApplications")),messages=await getDocs(collection(db,"partnerMessages"));refs=[...messages.docs.map(x=>x.ref),...apps.docs.map(x=>x.ref)]}else{const selected=target==="all-orders"?orders:orders.filter(x=>(x.status||"new")===target),ids=new Set(selected.map(x=>x.id)),messages=await getDocs(collection(db,"orderMessages"));refs=[...messages.docs.filter(x=>ids.has(x.data().bookingId)).map(x=>x.ref),...selected.map(x=>doc(db,"bookings",x.id))]}await deleteRefs(refs);$("#clear-data-modal").hidden=true;toast(`${refs.length} records deleted`)}catch(err){toast("Cleanup failed: "+err.message)}};
+    function renderSections(){if(!websiteSections.length){$("#sections-grid").innerHTML='<div class="empty">No custom sections yet. Add one and then assign services to it.</div>';return}$("#sections-grid").innerHTML=websiteSections.map(x=>`<article class="section-card ${x.active===false?"inactive":""}"><span class="type">#${esc(x.key)} · order ${esc(x.order??100)}</span><h3>${esc(x.title)}</h3><p><b>${esc(x.kicker||"Custom section")}</b><br>${esc(x.description||"")}</p><div class="section-actions"><button class="icon-btn" data-toggle-section="${x.id}">${x.active===false?"Show":"Hide"}</button><button class="icon-btn" data-edit-section="${x.id}">Edit</button><button class="icon-btn" data-delete-section="${x.id}">Delete</button></div></article>`).join("")}
+    function openSection(x={}){const f=$("#section-form");f.reset();f.elements.id.value=x.id||"";f.elements.title.value=x.title||"";f.elements.kicker.value=x.kicker||"";f.elements.description.value=x.description||"";f.elements.key.value=x.key||"";f.elements.key.readOnly=!!x.id;f.elements.order.value=x.order??100;f.elements.active.checked=x.active!==false;$("#section-modal-title").textContent=x.id?"Edit section":"Add section";$("#section-modal").hidden=false}
+    $("#add-section").onclick=()=>openSection();$("#section-form").onsubmit=async e=>{e.preventDefault();const f=e.currentTarget,d=new FormData(f),id=String(d.get("id")||""),key=String(d.get("key")||"").toLowerCase().trim(),payload={key,title:String(d.get("title")||"").trim(),kicker:String(d.get("kicker")||"").trim(),description:String(d.get("description")||"").trim(),order:Number(d.get("order")||100),active:d.get("active")==="on",updatedAt:serverTimestamp()};try{id?await updateDoc(doc(db,"websiteSections",id),payload):await addDoc(collection(db,"websiteSections"),{...payload,createdAt:serverTimestamp()});$("#section-modal").hidden=true;toast(id?"Section updated":"Section added")}catch(err){toast("Save failed: "+err.message)}};$("#sections-grid").onclick=async e=>{const edit=e.target.dataset.editSection,toggle=e.target.dataset.toggleSection,remove=e.target.dataset.deleteSection;try{if(edit)openSection(websiteSections.find(x=>x.id===edit));if(toggle){const x=websiteSections.find(v=>v.id===toggle);await updateDoc(doc(db,"websiteSections",toggle),{active:x.active===false,updatedAt:serverTimestamp()});toast("Section visibility updated")}if(remove&&confirm("Delete this section? Services assigned to it will remain saved but hidden.")){await deleteDoc(doc(db,"websiteSections",remove));toast("Section deleted")}}catch(err){toast("Action failed: "+err.message)}};
+    function renderTeam(){if(!teamMembers.length){$("#team-grid").innerHTML='<div class="empty">No team profiles yet. Add your founder, CEO or helpers.</div>';return}$("#team-grid").innerHTML=teamMembers.map(x=>`<article class="service-card ${x.active===false?"inactive":""}"><img src="${esc(driveImage(x.imageUrl))}" alt="${esc(x.name)}" style="width:100%;height:190px;object-fit:cover;border-radius:12px;background:#eee" referrerpolicy="no-referrer"><div class="line1" style="margin-top:14px"><span class="type">${esc(x.role)}</span><span class="badge ${x.active===false?"cancelled":"completed"}">${x.active===false?"Hidden":"Visible"}</span></div><h3>${esc(x.name)}</h3><p>${esc(x.details)}</p><div class="service-foot"><strong>#${esc(x.order??100)}</strong><div><button class="icon-btn" data-toggle-team="${x.id}">${x.active===false?"Show":"Hide"}</button><button class="icon-btn" data-edit-team="${x.id}">Edit</button><button class="icon-btn" data-delete-team="${x.id}">Delete</button></div></div></article>`).join("")}
+    function openTeam(x={}){const f=$("#team-form");f.reset();f.elements.id.value=x.id||"";f.elements.name.value=x.name||"";f.elements.role.value=x.role||"";f.elements.imageUrl.value=x.imageUrl||"";f.elements.details.value=x.details||"";f.elements.order.value=x.order??100;f.elements.active.checked=x.active!==false;$("#team-modal-title").textContent=x.id?"Edit profile":"Add person";$("#team-modal").hidden=false}
+    $("#add-team-member").onclick=()=>openTeam();$("#team-form").onsubmit=async e=>{e.preventDefault();const f=e.currentTarget,d=new FormData(f),id=String(d.get("id")||""),payload={name:String(d.get("name")||"").trim(),role:String(d.get("role")||"").trim(),imageUrl:String(d.get("imageUrl")||"").trim(),details:String(d.get("details")||"").trim(),order:Number(d.get("order")||100),active:d.get("active")==="on",updatedAt:serverTimestamp()};try{id?await updateDoc(doc(db,"teamMembers",id),payload):await addDoc(collection(db,"teamMembers"),{...payload,createdAt:serverTimestamp()});$("#team-modal").hidden=true;toast(id?"Profile updated":"Profile added")}catch(err){toast("Save failed: "+err.message)}};
+    $("#team-grid").onclick=async e=>{const edit=e.target.dataset.editTeam,toggle=e.target.dataset.toggleTeam,remove=e.target.dataset.deleteTeam;try{if(edit)openTeam(teamMembers.find(x=>x.id===edit));if(toggle){const x=teamMembers.find(v=>v.id===toggle);await updateDoc(doc(db,"teamMembers",toggle),{active:x.active===false,updatedAt:serverTimestamp()});toast("Profile visibility updated")}if(remove&&confirm("Delete this team profile?")){await deleteDoc(doc(db,"teamMembers",remove));toast("Profile deleted")}}catch(err){toast("Action failed: "+err.message)}};
+    function renderBrands(){if(!brandTieups.length){$("#brands-grid").innerHTML='<div class="empty">No company tie-ups yet.</div>';return}$("#brands-grid").innerHTML=brandTieups.map(x=>`<article class="service-card ${x.active===false?"inactive":""}"><img src="${esc(driveImage(x.imageUrl))}" alt="${esc(x.name)}" style="width:100%;height:130px;object-fit:contain;border-radius:12px;background:#fff" referrerpolicy="no-referrer"><div class="line1" style="margin-top:14px"><span class="type">${esc(x.relationship||"Brand promotion partner")}</span><span class="badge ${x.active===false?"cancelled":"completed"}">${x.active===false?"Hidden":"Visible"}</span></div><h3>${esc(x.name)}</h3><p>${esc(x.details||"")}</p><div class="service-foot"><strong>#${esc(x.order??100)}</strong><div><button class="icon-btn" data-toggle-brand="${x.id}">${x.active===false?"Show":"Hide"}</button><button class="icon-btn" data-edit-brand="${x.id}">Edit</button><button class="icon-btn" data-delete-brand="${x.id}">Delete</button></div></div></article>`).join("")}
+    function openBrand(x={}){const f=$("#brand-form");f.reset();f.elements.id.value=x.id||"";f.elements.name.value=x.name||"";f.elements.relationship.value=x.relationship||"";f.elements.imageUrl.value=x.imageUrl||"";f.elements.details.value=x.details||"";f.elements.website.value=x.website||"";f.elements.order.value=x.order??100;f.elements.active.checked=x.active!==false;$("#brand-modal-title").textContent=x.id?"Edit company":"Add company";$("#brand-modal").hidden=false}
+    $("#add-brand").onclick=()=>openBrand();$("#brand-form").onsubmit=async e=>{e.preventDefault();const f=e.currentTarget,d=new FormData(f),id=String(d.get("id")||""),payload={name:String(d.get("name")||"").trim(),relationship:String(d.get("relationship")||"").trim(),imageUrl:String(d.get("imageUrl")||"").trim(),details:String(d.get("details")||"").trim(),website:String(d.get("website")||"").trim(),order:Number(d.get("order")||100),active:d.get("active")==="on",updatedAt:serverTimestamp()};try{id?await updateDoc(doc(db,"brandTieups",id),payload):await addDoc(collection(db,"brandTieups"),{...payload,createdAt:serverTimestamp()});$("#brand-modal").hidden=true;toast(id?"Company updated":"Company added")}catch(err){toast("Save failed: "+err.message)}};
+    $("#brands-grid").onclick=async e=>{const edit=e.target.dataset.editBrand,toggle=e.target.dataset.toggleBrand,remove=e.target.dataset.deleteBrand;try{if(edit)openBrand(brandTieups.find(x=>x.id===edit));if(toggle){const x=brandTieups.find(v=>v.id===toggle);await updateDoc(doc(db,"brandTieups",toggle),{active:x.active===false,updatedAt:serverTimestamp()});toast("Company visibility updated")}if(remove&&confirm("Delete this company tie-up?")){await deleteDoc(doc(db,"brandTieups",remove));toast("Company deleted")}}catch(err){toast("Action failed: "+err.message)}};
+    document.querySelectorAll('.nav-button').forEach(b=>b.onclick=()=>{$$('.nav-button').forEach(x=>x.classList.toggle('active',x===b));$("#dashboard-view").hidden=b.dataset.view!=="dashboard";$("#orders-view").hidden=b.dataset.view!=="orders";$("#services-view").hidden=b.dataset.view!=="services";$("#showcase-view").hidden=b.dataset.view!=="showcase";$("#partners-view").hidden=b.dataset.view!=="partners";$("#worktypes-view").hidden=b.dataset.view!=="worktypes";$("#members-view").hidden=b.dataset.view!=="members";$("#sections-view").hidden=b.dataset.view!=="sections";$("#users-view").hidden=b.dataset.view!=="users";$("#about-view").hidden=b.dataset.view!=="about"});
+    const workTemplates={editor:{title:"Video Editor",description:"Reels, YouTube videos, captions, motion graphics and thumbnails.",helpText:"Tell us your editing software, styles, turnaround time and the type of videos you edit.",isOther:false},camera:{title:"Cameraman / iPhone Shooter",description:"Shoot creator content, reels, interviews, products or podcasts.",helpText:"Share your camera or iPhone model, shooting experience and areas you can travel to.",isOther:false},gear:{title:"Gear Provider",description:"Rent your camera, iPhone, microphone, tripod, lights or complete setup.",helpText:"List every item, model, condition, rental price and whether delivery is available.",isOther:false},studio:{title:"Studio Partner",description:"List a video, photo, podcast or creator studio available for booking.",helpText:"Describe the studio, location, facilities, capacity, pricing and available timings.",isOther:false},other:{title:"Other Service",description:"Offer another creative, production, technical or local service.",helpText:"Write your service name, explain what you offer and how it helps creators.",isOther:true}};function renderWorkTypes(){if(!partnerCategories.length){$("#worktypes-grid").innerHTML='<div class="empty">No saved work types yet. Use a template above or add a custom work type.</div>';return}$("#worktypes-grid").innerHTML=partnerCategories.map((x,i)=>`<article class="service-card ${x.active===false?"inactive":""}"><div class="line1"><span class="type">Position ${i+1}</span><span class="badge ${x.active===false?"cancelled":"completed"}">${x.active===false?"Hidden":"Visible"}</span></div><h3>${esc(x.title)}</h3><p>${esc(x.description)}</p><small style="display:block;color:var(--muted);line-height:1.5"><b>Form prompt:</b> ${esc(x.helpText)}</small><div class="service-foot"><div><button class="icon-btn" data-move-work="up" data-work-id="${x.id}" ${i===0?"disabled":""}>↑</button><button class="icon-btn" data-move-work="down" data-work-id="${x.id}" ${i===partnerCategories.length-1?"disabled":""}>↓</button></div><div><button class="icon-btn" data-toggle-work="${x.id}">${x.active===false?"Show":"Hide"}</button><button class="icon-btn" data-edit-work="${x.id}">Edit</button><button class="icon-btn" data-delete-work="${x.id}">Delete</button></div></div></article>`).join("")}function openWorkType(x={}){const f=$("#worktype-form");f.reset();f.elements.id.value=x.id||"";f.elements.title.value=x.title||"";f.elements.description.value=x.description||"";f.elements.helpText.value=x.helpText||"";f.elements.order.value=x.order??partnerCategories.length+1;f.elements.isOther.checked=x.isOther===true;f.elements.active.checked=x.active!==false;$("#worktype-modal-title").textContent=x.id?"Edit work type":"Add work type";$("#worktype-modal").hidden=false}$("#add-worktype").onclick=()=>openWorkType();$("#worktype-templates").onclick=e=>{const key=e.target.dataset.workTemplate;if(key)openWorkType({...workTemplates[key],order:partnerCategories.length+1,active:true})};$("#worktype-form").onsubmit=async e=>{e.preventDefault();const f=e.currentTarget,d=new FormData(f),id=String(d.get("id")||""),payload={title:String(d.get("title")||"").trim(),description:String(d.get("description")||"").trim(),helpText:String(d.get("helpText")||"").trim(),order:Number(d.get("order")||100),isOther:d.get("isOther")==="on",active:d.get("active")==="on",updatedAt:serverTimestamp()};try{id?await updateDoc(doc(db,"partnerCategories",id),payload):await addDoc(collection(db,"partnerCategories"),{...payload,createdAt:serverTimestamp()});$("#worktype-modal").hidden=true;toast(id?"Work type updated":"Work type added")}catch(err){toast("Save failed: "+err.message)}};$("#worktypes-grid").onclick=async e=>{const id=e.target.dataset.workId||e.target.dataset.toggleWork||e.target.dataset.editWork||e.target.dataset.deleteWork;if(!id)return;const x=partnerCategories.find(v=>v.id===id);try{if(e.target.dataset.editWork)openWorkType(x);if(e.target.dataset.toggleWork){await updateDoc(doc(db,"partnerCategories",id),{active:x.active===false,updatedAt:serverTimestamp()});toast("Visibility updated")}if(e.target.dataset.deleteWork&&confirm(`Delete ${x.title}?`)){await deleteDoc(doc(db,"partnerCategories",id));toast("Work type deleted")}if(e.target.dataset.moveWork){const from=partnerCategories.findIndex(v=>v.id===id),to=e.target.dataset.moveWork==="up"?from-1:from+1;if(to<0||to>=partnerCategories.length)return;const list=[...partnerCategories];[list[from],list[to]]=[list[to],list[from]];const batch=writeBatch(db);list.forEach((v,i)=>batch.update(doc(db,"partnerCategories",v.id),{order:i+1,updatedAt:serverTimestamp()}));await batch.commit();toast("Work type moved")}}catch(err){toast("Action failed: "+err.message)}};
+    function userDate(x){const d=x.lastLoginAt||x.createdAt;return d?.toDate?d.toDate().toLocaleString("en-IN"):"—"}function renderUsers(){const list=users.filter(x=>[x.name,x.email,x.role].join(" ").toLowerCase().includes(userSearch));$("#users-total").textContent=users.length;$("#users-clients").textContent=users.filter(x=>x.role==="client").length;$("#users-partners").textContent=users.filter(x=>x.role==="partner").length;$("#users-blocked").textContent=users.filter(x=>x.banned===true||x.deleted===true).length;if(!list.length){$("#users-table").innerHTML='<div class="empty">No registered users found. Profiles appear after users log in with the updated portals.</div>';return}$("#users-table").innerHTML=`<table><thead><tr><th>User</th><th>Type</th><th>Activity</th><th>Last login</th><th>Status</th><th>Actions</th></tr></thead><tbody>${list.map(x=>{const bookingCount=orders.filter(o=>o.userId===x.id).length,partnerCount=partners.filter(v=>v.userId===x.id).length,blocked=x.banned===true||x.deleted===true;return`<tr><td class="customer"><b>${esc(x.name||"Unnamed user")}</b><small>${esc(x.email||"No email")}</small><small>UID: ${esc(x.id)}</small></td><td><span class="badge ${x.role==="partner"?"pending":"new"}">${esc(x.role||"client")}</span></td><td><b>${bookingCount} orders</b><small>${partnerCount} partner applications</small></td><td>${esc(userDate(x))}</td><td><span class="badge ${blocked?"cancelled":"completed"}">${x.deleted?"Deleted":x.banned?"Banned":"Active"}</span></td><td><button class="icon-btn" data-ban-user="${x.id}" ${x.deleted?"disabled":""}>${x.banned?"Unban":"Ban"}</button><button class="icon-btn" style="color:var(--red)" data-delete-user="${x.id}" ${x.deleted?"disabled":""}>Delete</button></td></tr>`}).join("")}</tbody></table>`}$("#user-search").oninput=e=>{userSearch=e.target.value.trim().toLowerCase();renderUsers()};async function deleteUserData(uid){const userOrders=orders.filter(x=>x.userId===uid),userApps=partners.filter(x=>x.userId===uid),orderIds=new Set(userOrders.map(x=>x.id)),appIds=new Set(userApps.map(x=>x.id)),[orderMessages,partnerMessages]=await Promise.all([getDocs(collection(db,"orderMessages")),getDocs(collection(db,"partnerMessages"))]);const refs=[...orderMessages.docs.filter(x=>orderIds.has(x.data().bookingId)).map(x=>x.ref),...partnerMessages.docs.filter(x=>appIds.has(x.data().applicationId)).map(x=>x.ref),...userOrders.map(x=>doc(db,"bookings",x.id)),...userApps.map(x=>doc(db,"partnerApplications",x.id))];for(let i=0;i<refs.length;i+=450){const batch=writeBatch(db);refs.slice(i,i+450).forEach(ref=>batch.delete(ref));await batch.commit()}await setDoc(doc(db,"users",uid),{banned:true,deleted:true,deletedAt:serverTimestamp(),updatedAt:serverTimestamp()},{merge:true})}$("#users-table").onclick=async e=>{const ban=e.target.dataset.banUser,remove=e.target.dataset.deleteUser;if(ban){const x=users.find(v=>v.id===ban);if(!x)return;try{await updateDoc(doc(db,"users",ban),{banned:x.banned!==true,updatedAt:serverTimestamp()});toast(x.banned?"User unbanned":"User banned")}catch(err){toast("Action failed: "+err.message)}}if(remove){const x=users.find(v=>v.id===remove);if(!x||!confirm(`Delete ${x.email||"this user"} and all linked CreatorFlow data? This cannot be undone.`))return;try{await deleteUserData(remove);toast("User access blocked and linked data deleted")}catch(err){toast("Delete failed: "+err.message)}}};
+    function renderPartners(){renderDashboard();const list=partners.filter(x=>[x.name,x.phone,x.email,x.city,x.role,x.offering].join(" ").toLowerCase().includes(partnerSearch));if(!list.length){$("#partners-table").innerHTML='<div class="empty">No partner applications found.</div>';return}$("#partners-table").innerHTML=`<table><thead><tr><th>Partner</th><th>Role</th><th>City</th><th>What they provide</th><th>Availability</th><th>Status</th><th>Project</th></tr></thead><tbody>${list.map(x=>`<tr><td class="customer"><b>${esc(x.name)}</b><small>${esc(x.phone)} · ${esc(x.email)}</small>${x.portfolio?`<small><a href="${esc(x.portfolio)}" target="_blank" rel="noopener">Open portfolio ↗</a></small>`:""}</td><td><b>${esc(x.role)}</b><small>${esc(x.rate||"Rate not shared")}</small></td><td>${esc(x.city)}</td><td class="service-name"><b>${esc(x.offering)}</b><small>${esc(x.message||"")}</small></td><td>${esc(x.availability)}</td><td><select class="status-select" data-partner-status="${x.id}"><option value="new" ${(x.status||"new")==="new"?"selected":""}>New</option><option value="contacted" ${x.status==="contacted"?"selected":""}>Contacted</option><option value="approved" ${x.status==="approved"?"selected":""}>Approved</option><option value="rejected" ${x.status==="rejected"?"selected":""}>Rejected</option></select></td><td><button class="icon-btn" data-manage-partner="${x.id}">${x.projectTitle?"Manage project":"Assign project"}</button></td></tr>`).join("")}</tbody></table>`}
+    $("#partners-table").addEventListener("change",async e=>{const id=e.target.dataset.partnerStatus;if(!id)return;try{await updateDoc(doc(db,"partnerApplications",id),{status:e.target.value,updatedAt:serverTimestamp()});toast("Partner status updated")}catch(err){toast("Update failed: "+err.message)}});$("#partner-search").oninput=e=>{partnerSearch=e.target.value.toLowerCase();renderPartners()};
+    function renderPartnerAdminMessages(list){$("#partner-admin-messages").innerHTML=list.length?list.sort((a,b)=>(a.createdAt?.seconds||0)-(b.createdAt?.seconds||0)).map(m=>`<div style="padding:8px;margin:5px;background:${m.senderRole==="admin"?"#eeeafe":"#f4f6fb"}"><b>${m.senderRole==="admin"?"CreatorFlow":"Partner"}</b><br>${esc(m.text)}</div>`).join(""):'<div class="empty" style="padding:18px">No messages yet.</div>'}
+    $("#partners-table").addEventListener("click",e=>{const id=e.target.dataset.managePartner;if(!id)return;const x=partners.find(p=>p.id===id),f=$("#partner-manage-form");activePartnerId=id;f.reset();f.elements.id.value=id;f.elements.status.value=x.status||"new";f.elements.adminNote.value=x.adminNote||"";f.elements.projectTitle.value=x.projectTitle||"";f.elements.projectBrief.value=x.projectBrief||"";f.elements.projectStatus.value=x.projectStatus||"";f.elements.projectPayment.value=x.projectPayment||"";f.elements.projectDeadline.value=localDateTime(x.projectDeadline);f.elements.projectDeliveryUrl.value=x.projectDeliveryUrl||"";$("#partner-manage-title").textContent=x.name;unsubPartnerMessages?.();unsubPartnerMessages=onSnapshot(query(collection(db,"partnerMessages"),where("applicationId","==",id)),s=>renderPartnerAdminMessages(s.docs.map(d=>d.data())),err=>renderPartnerAdminMessages([{senderRole:"admin",text:err.message}]));$("#partner-manage-modal").hidden=false});
+    $("#partner-manage-form").onsubmit=async e=>{e.preventDefault();const d=new FormData(e.currentTarget),deadline=String(d.get("projectDeadline")||"");try{await updateDoc(doc(db,"partnerApplications",String(d.get("id"))),{status:String(d.get("status")),adminNote:String(d.get("adminNote")||""),projectTitle:String(d.get("projectTitle")||""),projectBrief:String(d.get("projectBrief")||""),projectStatus:String(d.get("projectStatus")||""),projectPayment:String(d.get("projectPayment")||""),projectDeadline:deadline?new Date(deadline):null,projectDeliveryUrl:String(d.get("projectDeliveryUrl")||""),updatedAt:serverTimestamp()});toast("Partner project updated")}catch(err){toast("Save failed: "+err.message)}};
+    $("#partner-admin-send").onclick=async()=>{const input=$("#partner-admin-message"),text=input.value.trim(),p=partners.find(x=>x.id===activePartnerId);if(!text||!p)return;try{await addDoc(collection(db,"partnerMessages"),{applicationId:p.id,userId:p.userId||"",senderId:auth.currentUser.uid,senderRole:"admin",text,createdAt:serverTimestamp()});input.value=""}catch(err){toast("Message failed: "+err.message)}};
+    const partnerDeleteObserver=new MutationObserver(()=>{$$("#partners-table [data-manage-partner]").forEach(button=>{if(button.parentElement.querySelector("[data-delete-partner]"))return;button.insertAdjacentHTML("afterend",` <button class="icon-btn" style="color:var(--red)" data-delete-partner="${button.dataset.managePartner}">Delete</button>`)})});partnerDeleteObserver.observe($("#partners-table"),{childList:true,subtree:true});
+    $("#partners-table").addEventListener("click",async e=>{const id=e.target.dataset.deletePartner;if(!id||!confirm("Delete this partner application, assigned project and all partner messages?"))return;try{const messages=await getDocs(query(collection(db,"partnerMessages"),where("applicationId","==",id))),batch=writeBatch(db);messages.docs.forEach(x=>batch.delete(x.ref));batch.delete(doc(db,"partnerApplications",id));await batch.commit();toast("Partner data deleted permanently")}catch(err){toast("Delete failed: "+err.message)}});
+    let partnerStatusFilter="all";function applyPartnerStatusFilter(){$$("#partners-table tbody tr").forEach(row=>{const value=row.querySelector("[data-partner-status]")?.value||"new";row.hidden=partnerStatusFilter!=="all"&&value!==partnerStatusFilter})}$("#partner-status-filters").onclick=e=>{const button=e.target.closest("[data-partner-filter]");if(!button)return;partnerStatusFilter=button.dataset.partnerFilter;$$('#partner-status-filters .filter').forEach(x=>x.classList.toggle('active',x===button));applyPartnerStatusFilter()};new MutationObserver(applyPartnerStatusFilter).observe($("#partners-table"),{childList:true,subtree:true});
+    function driveImage(url){try{const u=new URL(url),m=u.pathname.match(/\/file\/d\/([^/]+)/),id=m?.[1]||u.searchParams.get("id");return id?`https://drive.google.com/thumbnail?id=${id}&sz=w1200`:url}catch{return url}}
+    function renderMembersSettings(){const f=$("#members-settings");f.elements.enabled.checked=membersSettings.enabled===true;f.elements.title.value=membersSettings.title||"";f.elements.subtitle.value=membersSettings.subtitle||""}
+    function renderMembers(){if(!members.length){$("#members-grid").innerHTML='<div class="empty">No members added yet.</div>';return}$("#members-grid").innerHTML=members.map(x=>`<article class="service-card ${x.active===false?"inactive":""}"><img src="${esc(driveImage(x.imageUrl))}" alt="${esc(x.name)}" style="width:100%;height:150px;object-fit:cover;border-radius:12px;background:#eee" referrerpolicy="no-referrer"><h3>${esc(x.name)}</h3><p>${esc(x.label||"CreatorFlow Partner")}</p><div class="service-foot"><strong>#${esc(x.order??100)}</strong><div><button class="icon-btn" data-toggle-member="${x.id}">${x.active===false?"Show":"Hide"}</button><button class="icon-btn" data-edit-member="${x.id}">Edit</button><button class="icon-btn" data-delete-member="${x.id}">Delete</button></div></div></article>`).join("")}
+    function openMember(x={}){const f=$("#member-form");f.reset();f.elements.id.value=x.id||"";f.elements.name.value=x.name||"";f.elements.imageUrl.value=x.imageUrl||"";f.elements.label.value=x.label||"";f.elements.order.value=x.order??100;f.elements.active.checked=x.active!==false;$("#member-modal-title").textContent=x.id?"Edit member":"Add member";$("#member-modal").hidden=false}
+    $("#add-member").onclick=()=>openMember();
+    $("#members-settings").onsubmit=async e=>{e.preventDefault();const d=new FormData(e.currentTarget);try{await setDoc(doc(db,"siteSettings","members"),{enabled:d.get("enabled")==="on",title:String(d.get("title")||"Our partners & members"),subtitle:String(d.get("subtitle")||""),updatedAt:serverTimestamp()},{merge:true});toast("Member section settings saved")}catch(err){toast("Save failed: "+err.message)}};
+    $("#member-form").onsubmit=async e=>{e.preventDefault();const f=e.currentTarget,d=new FormData(f),id=String(d.get("id")||""),payload={name:String(d.get("name")||"").trim(),imageUrl:String(d.get("imageUrl")||"").trim(),label:String(d.get("label")||"").trim(),order:Number(d.get("order")||100),active:d.get("active")==="on",updatedAt:serverTimestamp()};try{id?await updateDoc(doc(db,"featuredMembers",id),payload):await addDoc(collection(db,"featuredMembers"),{...payload,createdAt:serverTimestamp()});$("#member-modal").hidden=true;toast(id?"Member updated":"Member added")}catch(err){toast("Save failed: "+err.message)}};
+    $("#members-grid").onclick=async e=>{const edit=e.target.dataset.editMember,toggle=e.target.dataset.toggleMember,remove=e.target.dataset.deleteMember;try{if(edit)openMember(members.find(x=>x.id===edit));if(toggle){const x=members.find(v=>v.id===toggle);await updateDoc(doc(db,"featuredMembers",toggle),{active:x.active===false,updatedAt:serverTimestamp()});toast("Member visibility updated")}if(remove&&confirm("Delete this member?")){await deleteDoc(doc(db,"featuredMembers",remove));toast("Member deleted")}}catch(err){toast("Action failed: "+err.message)}};
+    $$('[data-close]').forEach(x=>x.onclick=()=>x.closest('.modal-bg').hidden=true);$$('.modal-bg').forEach(x=>x.onclick=e=>{if(e.target===x)x.hidden=true});
+  </script>
+</body>
+</html>
+
+
